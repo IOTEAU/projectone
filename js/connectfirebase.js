@@ -8,90 +8,58 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
+
 var dbFirebase = firebase.database();
-var numPerple = dbFirebase.ref('UserinRoom');
-var numPerples = numPerple.on('value', function(snapshot) {
+var dbRef = firebase.database().ref()
+var firebaseAuth = firebase.auth
+var firebase = firebase.auth().auth
 
 
+var numLEDR1 = dbFirebase.ref('room1/UserinRoom');
+var numLEDR1s = numLEDR1.on('value', function (snapshot) {
 
-    
-    
-    // console.log("Airtwo:" + snapshot.val());
-    var snap = snapshot.val();
-   
+    var snapLEDR1 = snapshot.val();
+    var num = 0;
+    var LED;
+    if (snapLEDR1 == num) {
+        $("#btn-LED-R1").addClass('btn-off');
+        $("#btn-LED-R1").removeClass('btn-on');
 
-
-    var num0 = 0;
-
-  var LED 
-  var AIR
-    if (snap <= num0) {
-
-        LED = document.querySelectorAll("#button");
-        //S LED //
-        LED[0].style.display = "block";
-       
-        
-         AIR = document.querySelectorAll("#button1");
-        //S AIR //
-        AIR[0].style.display = "none";
-       
     } else {
-         LED = document.querySelectorAll("#button");
-        //S101 LED //testSensor
-        LED[0].style.display = "none";
-        
-        
-        
-        
+        $("#btn-LED-R1").addClass('btn-on');
+        $("#btn-LED-R1").removeClass('btn-off');
 
-         AIR = document.querySelectorAll("#button1");
-        //S101 LED //
-        AIR[0].style.display = "block";
-        
-        
     }
-
-    document.getElementById('userinRoomS101').innerHTML = snapshot.val()
-    
-
-
+    console.log('R1S101_LED:' + snapLEDR1)
+    $('#userinRoomS101').text(snapLEDR1);
+});
+var numAIR0R1 = dbFirebase.ref('room1/air');
+var numAIR0R1s = numAIR0R1.on('value', function (snapshot) {
+    var snapAIR0R1 = snapshot.val();
+    var num = 0
+    var AIR;
+    if (snapAIR0R1 == num) {
+        $("#btn-AIR1-R1").addClass('btn-off');
+        $("#btn-AIR1-R1").removeClass('btn-on');
+    } else {
+        $("#btn-AIR1-R1").addClass('btn-on');
+        $("#btn-AIR1-R1").removeClass('btn-off');
+    }
+    console.log('R1S101_AIR1:' + snapAIR0R1)
 });
 
-var numPerple1 = dbFirebase.ref('air');
-var numPerples = numPerple1.on('value', function(snapshot) {
- var snap1 = snapshot.val();
-
-
-var num1 =0
-  var AIRS101
-    if (snap1 <= num1) {
-
-        
-        AIRS101 = document.querySelectorAll("#button");
-       
-        AIRS101[1].style.display = "block";
-        
-         AIRS101 = document.querySelectorAll("#button1");
-        //S AIRS101 //
-        AIRS101[1].style.display = "none";
-     
-
-
-
+var numAIR1R1 = dbFirebase.ref('room1/air1');
+var numAIR1R1s = numAIR1R1.on('value', function (snapshot) {
+    var snapAIR1R1 = snapshot.val();
+    var num = 0
+    var AIR;
+    if (snapAIR1R1 == num) {
+        $("#btn-AIR2-R1").addClass('btn-off');
+        $("#btn-AIR2-R1").removeClass('btn-on');
     } else {
-        AIRS101 = document.querySelectorAll("#button");
-        //S101 AIRS101 //testSensor
-        AIRS101[1].style.display = "none";
-        
-
-        AIRS101 = document.querySelectorAll("#button1");
-        //S101 LED //
-        AIRS101[1].style.display = "block";
-        
-        
-       
-       
-
+        $("#btn-AIR2-R1").addClass('btn-on');
+        $("#btn-AIR2-R1").removeClass('btn-off');
     }
+    console.log('R1S101_AIR2:' + snapAIR1R1)
 });
